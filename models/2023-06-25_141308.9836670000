@@ -1,0 +1,76 @@
+Fichier de configuration 
+
+/******************configurer le serveur de configuration*******************/
+Etape 1 : créer les dossiers de configuration
+	
+	|"path"/ts0
+	|"path"/ts1
+	|"path"/ts2
+
+Etape 2 : ouvrir trois CLI et lancer dans chacun
+	|mongod --configsvr --replSet rstest --port 3001 --dbpath C:\Users\TOSHIBA\Documents\NiveauIV\semestre2\info_decisionnelle\demosharding\ts0 --bind_ip 192.168.43.161
+	|mongod --configsvr --replSet rstest --port 3002 --dbpath C:\Users\TOSHIBA\Documents\NiveauIV\semestre2\info_decisionnelle\demosharding\ts1 --bind_ip 192.168.43.161
+	|mo
+
+Etape 3 : ajouter la configuration des fichier de configuration
+	|mongosh -port 3001
+	|-config = {_id : "rstest", 
+		    members = [
+			{_id:0,host : "192.168.43.194:4001"},
+			{_id:1,host : "192.168.43.194:4002"},
+			{_id:2,host : "192.168.43.194:4003"}
+			]
+		   }
+	|rs.initiate(config)
+
+Etape 4 : configurer l'interface de routage des données celle qui fera office de bd centrale
+
+	|mongos --port 3004 --configdb rstest/ip_address:3001
+	|mongosh --port 3004 --host 192.168.43.162
+	|sh.addShard("sh0","ip_address_tchoumi:3005")
+	|sh.addShard("sh1","ip_address_teubou:3006")
+	|sh.addShard("sh2","ip_address_tchoumi:3007")
+	|créer database
+	|créer collections
+	|sh.enableSharding("database.collection",key:"hashed")
+	|sh.enableSharding("database.collection",key:"hashed")
+	|insert data with a for lop
+	
+Etape 4 intermediaire
+{
+  "_id": {
+    "$oid": "644ba3533a6f870c0fe94540"
+  },
+  "_noClient": 10,
+  "nomClient": "Luc Samsom",
+  "noTelephone": "(999)999-999"
+},
+{
+  "_id": {
+    "$oid": "644ba3533a6f870c0fe94541"
+  },
+  "_noClient": 20,
+  "nomClient": "Dollard Tremblay",
+  "noTelephone": "(888)888-888"
+},
+{
+  "_id": {
+    "$oid": "644ba3533a6f870c0fe94542"
+  },
+  "_noClient": 30,
+  "nomClient": "Lin Bô",
+  "noTelephone": "(777)777-7777"
+},
+{
+  "_id": {
+    "$oid": "644ba3533a6f870c0fe94543"
+  },
+  "_noClient": 40,
+  "nomClient": "Jean Leconte",
+  "noTelephone": "(666)666-6666"
+}
+
+
+mongod --configsvr --replSet info --port 3009 --dbpath .
+mongod --configsvr --replSet info --port 30091 --dbpath .
+

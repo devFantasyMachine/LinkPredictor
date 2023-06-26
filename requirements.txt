@@ -1,0 +1,7 @@
+Django~=4.2.2
+djangorestframework~=3.14.0
+tensorflow==2.10.0
+pandas~=2.0.2
+keras~=2.10.0
+scipy==1.9.1
+sklearn==1.1.2

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login</title>
+  <!-- plugins:css -->
+
+  <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="img/mdb-favicon.ico" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper" style="padding-left: 0;">
+      <div class="content-wrapper d-flex align-items-center auth px-0" style="background-color: black;">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5 card card-rounded">
+              <h4>ForecastingTrans</h4>
+              <h6 class="fw-light">Sign in to continue.</h6>
+              <form class="pt-3" method="post" action="login">
+
+{%csrf_token%}
+
+                <div class="form-group">
+                  <label class="form-label" for="form3Example3">Email address</label>
+                  <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1"
+                    placeholder="xxx@yyy.zzz">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="form3Example4">Password</label>
+                  <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1"
+                    placeholder="******">
+                </div>
+                <div class="mt-3">
+
+                    {% if error == True %}
+
+                        <span class="text text-secondary text-danger">Error with login : {{username}} don't exists</span>
+
+                    {%endif%}
+
+                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-black"
+                    style="background-color: #f16612;" value="SIGN IN">
+
+                </div>
+
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input">
+                      Keep me signed in
+                    </label>
+                  </div>
+                  <a href="#" class="auth-link text-black">Forgot password?</a>
+                </div>
+                <div class="text-center mt-4 fw-light">
+                  Don't have an account? <a href="register" class="text-decoration-underline"
+                    style="color: #f16612;">Create</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+
+</body>
+
+</html>

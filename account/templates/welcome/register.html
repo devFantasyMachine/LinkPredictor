@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Register</title>
+  <!-- plugins:css -->
+
+  <!-- Google Fonts Roboto -->
+   <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="img/mdb-favicon.ico" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper" style="padding-left: 0;">
+      <div class="content-wrapper d-flex align-items-center auth px-0" style="background-color: black;">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-6 mx-auto">
+            <div class=" text-left py-5 px-4 px-sm-5 card card-rounded">
+              <h4>ForecastingTrans</h4>
+              <h6 class="fw-light">Sign Up to continue.</h6>
+              <form class="pt-3" action="register" method="post">
+                {%csrf_token%}
+
+                <div class="d-flex justify-content-between">
+                  <div class="form-group">
+                    <label class="form-label" for="form3Example3">First name</label>
+                    <input type="text" name="first_name" class="form-control form-control-lg">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="form3Example3">Last Name</label>
+                    <input type="text" name="last_name" class="form-control form-control-lg">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="form3Example3">Email address</label>
+                  <input type="email" name="email" class="form-control form-control-lg"
+                    placeholder="xxx@yyy.zzz">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="form3Example4">Password</label>
+                  <input type="password" name="password" class="form-control form-control-lg"
+                    placeholder="******">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="form3Example4">Confirm Password</label>
+                  <input type="password" class="form-control form-control-lg"
+                    placeholder="******">
+                </div>
+                <div class="mt-3">
+                  <input class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-black"
+                    style="background-color: #f16612;" type="submit" value="SIGN UP">
+                </div>
+                <div class="text-center mt-4 fw-light">
+                 Already have an account? <a href="login" class="text-decoration-underline"
+                    style="color: #f16612;">Sign In</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+
+</body>
+
+</html>

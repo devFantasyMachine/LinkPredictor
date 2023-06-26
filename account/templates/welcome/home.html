@@ -1,0 +1,138 @@
+{% extends 'welcome/base.html' %}
+
+
+{% block sidebar %}
+
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar"
+     style="background-color: #FF5604;position: fixed; height: 100%">
+
+    <ul class="nav text-bold mt-4" style="background-color: #FF5604; height: 100%">
+        <li class="nav-item active">
+            <a class="nav-link" href="">
+                <i class="mdi mdi-grid-large menu-icon"></i>
+                <span class="menu-title">Statistiques</span>
+            </a>
+        </li>
+        <li class="nav-item nav-category">Model</li>
+
+        {% if me.is_superuser %}
+
+        <li class="nav-item">
+            <a class="nav-link" href="/models">
+                <i class="mdi mdi-grid-large menu-icon"></i>
+                <span class="menu-title">Importer
+              </span>
+            </a>
+        </li>
+
+        {% endif %}
+
+
+        <li class="nav-item">
+            <a aria-controls="ui-basic" aria-expanded="false" class="nav-link" data-bs-toggle="collapse"
+               href="/predictions">
+                <i class="menu-icon mdi mdi-floor-plan"></i>
+                <span class="menu-title">Predictions</span>
+                <i class="menu-arrow"></i>
+            </a>
+        </li>
+        <li class="nav-item nav-category">Historique</li>
+        <li class="nav-item">
+            <a aria-controls="form-elements" aria-expanded="false" class="nav-link" data-bs-toggle="collapse"
+               href="#form-elements">
+                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                <span class="menu-title">Historique</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic
+                        Elements</a></li>
+                </ul>
+            </div>
+        </li>
+
+        {% if me.is_superuser %}
+
+        <li class="nav-item nav-category">Gestion des comptes</li>
+        <li class="nav-item">
+            <a aria-controls="auth" aria-expanded="false" class="nav-link" data-bs-toggle="collapse"
+               href="showusers">
+                <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                <span class="menu-title">Utilisateurs</span>
+                <i class="menu-arrow"></i>
+            </a>
+        </li>
+
+        {% endif %}
+
+
+        <li class="nav-item nav-category">help</li>
+        <li class="nav-item">
+            <a class="nav-link" >
+                <i class="menu-icon mdi mdi-file-document"></i>
+                <span class="menu-title">Documentation</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+{% endblock sidebar %}
+
+
+{% block content %}
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="home-tab">
+                <div class="tab-content tab-content-basic">
+                    <div aria-labelledby="overview" class="tab-pane fade show active" id="overview"
+                         role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="statistics-details d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p class="statistics-title">Bounce Rate</p>
+                                        <h3 class="rate-percentage">32.53%</h3>
+                                        <p class="text-danger d-flex"><i
+                                                class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+                                    </div>
+                                    <div>
+                                        <p class="statistics-title">Page Views</p>
+                                        <h3 class="rate-percentage">7,682</h3>
+                                        <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="statistics-title">New Sessions</p>
+                                        <h3 class="rate-percentage">68.8</h3>
+                                        <p class="text-danger d-flex"><i
+                                                class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                                    </div>
+                                    <div class="d-none d-md-block">
+                                        <p class="statistics-title">Avg. Time on Site</p>
+                                        <h3 class="rate-percentage">2m:35s</h3>
+                                        <p class="text-success d-flex"><i
+                                                class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
